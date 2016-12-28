@@ -1,0 +1,151 @@
+$fc: #666;
+$fs: 1em;
+$lh: 1.7em;
+$ff: Lato;
+$bg: #e9f3fa;
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+a{
+	color: $fc;
+	text-decoration: none;
+}
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: $ff;
+	font-size: $fs;
+	color: $fc;
+	line-height: $lh;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+.container{
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+}
+.desktop{
+	display: none;
+}
+.nav{
+	width: 100%;
+	background: $bg;
+	@include clearfix;
+	li{
+		display: block;
+		width: 20%;
+		float: left;
+		padding: 2%;
+		text-align: center;
+		a{
+			display: inline-block;
+			padding: 0 15px;
+			@include radius(7px);
+			&.active{
+				background-color: #504f51;
+				color: white;
+			}
+			&:hover{
+				color: white;
+				background-color: #504f51;
+			}
+			&.logo{
+				line-height: $lh*2;
+				&:hover{
+					background:none;
+				}
+				img{
+					width: 100%;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+}
+.content{
+	width: 100%;
+	@include clearfix;
+	.wrap_img{
+		width: 60%;
+		float: left;
+		padding: 50px 100px;
+		img{
+			width: 100%;
+		}
+	}
+	.wrap_menu{
+		width: 40%;
+		float: left;
+		padding-right: 5%;
+    	padding-top: 7%;
+		.menu{
+			width: 100%;
+			li{
+				list-style: none;
+				background: $bg;
+				margin: 4% 0;
+				padding: 2%;
+				text-align: center;
+				@include radius(7px);
+				a.active{
+					color: #fc635e;
+				}
+				a:hover{
+					color: #fc635e;
+				}
+			}
+		}
+	}
+}
+//MOBILE
+.mobile{
+	display: none;
+	background: $bg;
+	text-align: center;	
+}
+.logo_mob{
+	width: 40%;
+	padding-top: 30px;
+}
+.menu_mob{
+	padding-bottom: 40px;
+	li{
+		background: white;
+		margin: 20px auto;
+		padding: 10px;
+		@include radius(10px);
+		width: 80%;
+    	list-style: none;
+	}
+}
+@media screen and (max-width: 768px) {
+	.mobile{
+		display: block;
+	}
+	.desktop{
+		display: none;
+	}
+
+}
+@media screen and (min-width: 768px) {
+	.desktop{
+		display: block;
+	}
+	.mobile{
+		display: none;
+	}
+}
